@@ -7,11 +7,14 @@
 # TODO: Detect when paddle misses
 # TODO: Keep score
 
-from game_screen import GameScreen, Turtle
+from ball import Ball
+from game_screen import GameScreen
 from paddle import Paddle
 
 game_screen = GameScreen()
 
 player_1 = Paddle(game_screen.screen, (-480, 0), 'w', 's')
 player_2 = Paddle(game_screen.screen, (480, 0), 'Up', 'Down')
+ball = Ball(game_screen.screen)
+
 game_screen.screen.exitonclick()
