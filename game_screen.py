@@ -14,6 +14,7 @@ class GameScreen:
         self.__create_half_line()
         self.screen.listen()
         self.screen.update()
+        self.__create_screen_message()
 
     @staticmethod
     def __create_half_line():
@@ -26,3 +27,15 @@ class GameScreen:
             half_line.goto(x, y)
             half_line.stamp()
             y -= 20
+
+    def __create_screen_message(self):
+        self.message = Turtle()
+        self.message.up()
+        self.message.ht()
+        self.message.color('yellow')
+
+    def game_over(self, winner):
+        self.message.goto(0, 0)
+        self.message.write(arg='GAME OVER!', align='center', font=('Courier New', 30, 'bold'))
+        self.message.goto(0, -40)
+        self.message.write(arg=f'{winner} has won!', align='center', font=('Courier New', 30, 'bold'))

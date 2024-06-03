@@ -2,8 +2,9 @@ from turtle import Turtle
 
 
 class Paddle(Turtle):
-    def __init__(self, screen, starting_pos, control_up, control_down):
+    def __init__(self, screen, starting_pos, control_up, control_down, name):
         super().__init__('square')
+        self.name = name
         self.penup()
         self.shapesize(stretch_wid=3, stretch_len=1)
         self.color('white')

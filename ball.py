@@ -3,14 +3,13 @@ import random
 
 
 class Ball(Turtle):
-    def __init__(self, screen, speed):
+    def __init__(self, screen):
         super().__init__('circle')
         self.up()
         self.color('white')
         self.goto(0, 0)
-        self.setheading(random.randint(0, 360))
-        self.x_move = speed
-        self.y_move = speed
+        self.x_move = 1
+        self.y_move = 1
         self.screen = screen
         self.screen.update()
 
@@ -30,4 +29,13 @@ class Ball(Turtle):
         self.x_move *= -1
 
     def is_hitting_paddle(self, paddle):
-        return self.distance(paddle) < 30
+        return self.distance(paddle) < 30 and (self.xcor() > 340 or self.xcor() < -340)
+
+    def is_out_of_bounds(self):
+        return self.xcor() > 495 or self.xcor() < -495
+
+    def respawn(self):
+        self.x_move = 1
+        self.y_move = 1
+        self.goto(0, 0)
+        self.screen.update()
