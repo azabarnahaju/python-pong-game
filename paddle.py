@@ -8,7 +8,7 @@ class Paddle(Turtle):
         self.shapesize(stretch_wid=3, stretch_len=1)
         self.color('white')
         self.goto(starting_pos[0], starting_pos[1])
-        self.speed('fast')
+        self.speed('fastest')
         screen.onkeypress(key=control_up, fun=self.__go_up)
         screen.onkeypress(key=control_down, fun=self.__go_down)
         screen.update()

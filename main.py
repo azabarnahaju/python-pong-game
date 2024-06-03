@@ -15,6 +15,13 @@ game_screen = GameScreen()
 
 player_1 = Paddle(game_screen.screen, (-480, 0), 'w', 's')
 player_2 = Paddle(game_screen.screen, (480, 0), 'Up', 'Down')
-ball = Ball(game_screen.screen)
+speed = 1
+ball = Ball(game_screen.screen, speed)
+is_game_on = True
+
+while is_game_on:
+    ball.move()
+    if ball.is_hitting_paddle(player_1) or ball.is_hitting_paddle(player_2):
+        ball.bounce_off_paddle()
 
 game_screen.screen.exitonclick()
