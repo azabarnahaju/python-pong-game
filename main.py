@@ -11,18 +11,22 @@ from ball import Ball
 from game_screen import GameScreen
 from paddle import Paddle
 from score import ScoreBoard
+import time
 
 game_screen = GameScreen()
 
 player_1 = Paddle(game_screen.screen, (-480, 0), 'w', 's', 'Player 1')
 player_2 = Paddle(game_screen.screen, (480, 0), 'Up', 'Down', 'Player 2')
-player_1_score = ScoreBoard((-150, 200), game_screen.screen)
-player_2_score = ScoreBoard((150, 200), game_screen.screen)
+player_1_score = ScoreBoard((-150, 200))
+player_2_score = ScoreBoard((150, 200))
+game_screen.screen.tracer(0)
 
-ball = Ball(game_screen.screen)
+ball = Ball()
 winner = None
 
 while winner is None:
+    time.sleep(0.03)
+    game_screen.screen.update()
     ball.move()
 
     if ball.is_hitting_paddle(player_1) or ball.is_hitting_paddle(player_2):

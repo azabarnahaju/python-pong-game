@@ -13,7 +13,6 @@ class GameScreen:
         self.screen.title('Pong Game')
         self.__create_half_line()
         self.screen.listen()
-        self.screen.update()
         self.__create_screen_message()
 
     @staticmethod

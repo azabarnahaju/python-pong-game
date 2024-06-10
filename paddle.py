@@ -12,20 +12,16 @@ class Paddle(Turtle):
         self.speed('fastest')
         screen.onkeypress(key=control_up, fun=self.__go_up)
         screen.onkeypress(key=control_down, fun=self.__go_down)
-        screen.update()
-        self.screen = screen
 
     def __go_up(self):
         if not self.is_hitting_wall_top():
             curr_y = self.ycor()
             self.sety(curr_y + 20)
-        self.screen.update()
 
     def __go_down(self):
         if not self.is_hitting_wall_bottom():
             curr_y = self.ycor()
             self.sety(curr_y - 20)
-        self.screen.update()
 
     def is_hitting_wall_top(self):
         return self.distance((-480, 300)) < 50 or self.distance((480, 300)) < 50

@@ -3,21 +3,18 @@ import random
 
 
 class Ball(Turtle):
-    def __init__(self, screen):
+    def __init__(self):
         super().__init__('circle')
         self.up()
         self.color('white')
         self.goto(0, 0)
-        self.x_move = 1
-        self.y_move = 1
-        self.screen = screen
-        self.screen.update()
+        self.x_move = 10
+        self.y_move = 10
 
     def move(self):
         if self.is_hitting_wall():
             self.bounce_off_wall()
         self.goto(self.xcor() + self.x_move, self.ycor() + self.y_move)
-        self.screen.update()
 
     def is_hitting_wall(self):
         return self.ycor()-5 <= -295 or self.ycor() + 5 >= 295
@@ -29,13 +26,12 @@ class Ball(Turtle):
         self.x_move *= -1
 
     def is_hitting_paddle(self, paddle):
-        return self.distance(paddle) < 30 and (self.xcor() > 340 or self.xcor() < -340)
+        return self.distance(paddle) < 30 and (self.xcor() > 320 or self.xcor() < -320)
 
     def is_out_of_bounds(self):
         return self.xcor() > 495 or self.xcor() < -495
 
     def respawn(self):
-        self.x_move = 1
-        self.y_move = 1
+        self.x_move = 10
+        self.y_move = 10
         self.goto(0, 0)
-        self.screen.update()
